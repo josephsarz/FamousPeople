@@ -31,6 +31,7 @@ public class MainActivity extends AppCompatActivity {
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new UserAdapter(users);
+        adapter.notifyDataSetChanged();
         mRecyclerView.setAdapter(adapter);
 
         FloatingActionButton fab = findViewById(R.id.fab);

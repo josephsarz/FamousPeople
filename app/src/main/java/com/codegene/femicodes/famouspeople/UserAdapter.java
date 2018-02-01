@@ -40,6 +40,10 @@ class UserAdapter extends RecyclerView.Adapter<UserAdapter.ViewHolder> {
             @Override
             public void onClick(View view) {
 
+                AppController.provideDb().userDao().deleteUsers(users.get(position));
+
+                notifyItemRemoved(position);
+                notifyDataSetChanged();
 
             }
         });
