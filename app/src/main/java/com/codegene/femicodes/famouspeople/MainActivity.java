@@ -11,13 +11,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 
-import java.util.ArrayList;
+import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
     RecyclerView mRecyclerView;
     RecyclerView.Adapter adapter;
-    ArrayList<String> users;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -26,13 +25,9 @@ public class MainActivity extends AppCompatActivity {
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
-        mRecyclerView = findViewById(R.id.recyclerview_view);
+        mRecyclerView = findViewById(R.id.famous_people_recyclerview);
 
-        users = new ArrayList<>();
-
-        for (int i = 0; i < 10; i++) {
-            users.add("User #"+i);
-        }
+        List<User> users =  AppController.provideDb().userDao().getAllUsers();
 
         mRecyclerView.setLayoutManager(new LinearLayoutManager(this));
         adapter = new UserAdapter(users);
